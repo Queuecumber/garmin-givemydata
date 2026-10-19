@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: garmin-mcp
-          image: registry.gitlab.com/queuecumber/garmin-givemydata:latest
+          image: ghcr.io/queuecumber/garmin-givemydata:latest
           ports:
             - name: mcp
               containerPort: 8000
