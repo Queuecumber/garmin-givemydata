@@ -20,4 +20,9 @@ if __name__ == "__main__":
     if transport != "stdio":
         mcp.settings.host = os.environ.get("MCP_HOST", "0.0.0.0")
         mcp.settings.port = int(os.environ.get("MCP_PORT", "8000"))
+        # FastMCP("garmin") builds with default host=127.0.0.1, which auto-enables
+        # DNS-rebinding protection pinned to localhost Host headers; the pod is
+        # reached via its Service name, so turn the protection off.
+        if mcp.settings.transport_security is not None:
+            mcp.settings.transport_security.enable_dns_rebinding_protection = False
     mcp.run(transport=transport)

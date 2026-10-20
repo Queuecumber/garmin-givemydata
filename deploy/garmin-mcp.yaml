@@ -2,6 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: nanhi-garmin-mcp
+  namespace: autonome-nanhi
 spec:
   accessModes:
     - ReadWriteOnce
@@ -58,6 +59,8 @@ metadata:
   name: nanhi-garmin-mcp
   namespace: autonome-nanhi
 spec:
+  selector:
+    app: nanhi-garmin-mcp
   ipFamilyPolicy: PreferDualStack
   ports:
     - name: mcp
